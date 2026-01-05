@@ -96,6 +96,11 @@ Automatic Bracket Pairing: Enhances Developer Experience (DX) by automatically i
   <img src="screenshots/running.png" width="200" alt="Running" />
 </p>
 
+![run](https://github.com/user-attachments/assets/05ccd16c-f805-479f-885d-c3561dd7c77f)
+
+![stop](https://github.com/user-attachments/assets/c16fcd42-2870-45c4-83ca-309436eb3274)
+
+![error](https://github.com/user-attachments/assets/f37ac0a5-69e5-4800-b850-5af1ad03b099)
 
 ---
 
