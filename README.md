@@ -3,20 +3,16 @@
 A lightweight Kotlin script editor and runner with syntax highlighting and clickable error output, built with Kotlin Multiplatform and Compose Multiplatform for Desktop.
 
 [![Demo Video](screenshots/video_preview.png)](screenshots/video.mp4)
-
 ---
 
 ## Key Features
 
-- **Kotlin syntax highlighting** in editor pane
-- **Clickable error messages** with cursor navigation
-- **Resizable editor & output panes**
+- **Syntax highlighting**: Real-time tokenization for Kotlin keywords, strings, and comments.
+- **Smart Navigation**: Clickable compiler error messages that jump directly to the line and column in the editor.
+- **Dynamic Layout**: Resizable split-pane interface (Editor & Output) built with custom drag logic.
 - **Reactive state management** using `ViewModel` + `StateFlow`
-- **Script execution** through temporary `.kts` files
-- **Run history tracking** with start/end times and exit codes
+- **Process Control**: Track execution history, duration, and exit codes with the ability to terminate scripts instantly.
 - **Smart editor behaviors**: auto-closing brackets, quotes, and indentation
-
----
 
 ---
 
@@ -68,19 +64,37 @@ The output pane displays script output with **clickable errors**:
 ---
 
 
+## Engineering Features
+### Reactive State & Concurrency Management
+Unlike simple text editors, this IDE manages a complex lifecycle of external processes using Kotlin Coroutines and StateFlow.
+
+ViewModel Architecture: Uses MutableStateFlow with an immutable ScriptUiState to ensure a "Single Source of Truth."
+
+Dispatchers & Lifecycle: Script execution is offloaded to Dispatchers.IO to keep the UI thread (Main) buttery smooth even during heavy compilation.
+
+Process Lifecycle Safety: Implemented NonCancellable blocks and destroyForcibly() to ensure no "zombie processes" are left behind if a user stops a script or closes the app.
+
+### "Smart Link" Error Navigation
+The IDE implements a custom bridge between the compiler output and the editor.
+
+Regex Parsing: A specialized ScriptParser uses optimized regular expressions to extract line:column metadata from the compiler's stderr.
+
+Interactive Output: The OutputPane uses LinkAnnotation.Clickable (Compose 1.7+ pattern) to turn raw text into interactive links that provide instant navigation back to the source code.
+
+### Custom Logic & UI Optimizations
+State-Driven Highlighting: The editor uses a custom-built Lexer that performs tokenization. Highlighting is applied via LaunchedEffect only when the text changes, preventing redundant re-renders.
+
+Dynamic Layouts: Implemented a custom Split-Pane logic using BoxWithConstraints and manual pixel-to-ratio calculations to allow real-time resizing.
+
+Automatic Bracket Pairing: Enhances Developer Experience (DX) by automatically inserting closing characters () {} [] "" with intelligent cursor placement.
+
+
 ## Screenshots
 
 <p float="left">
-  <img src="screenshots/correct.png" width="400" alt="Correct" />
-  <img src="screenshots/running.png" width="400" alt="Running" />
+  <img src="screenshots/correct.png" width="200" alt="Correct" />
+  <img src="screenshots/running.png" width="200" alt="Running" />
 </p>
-
-![stop](https://github.com/user-attachments/assets/88088e15-2bf1-4a62-9424-1ad280cd1f56)
-
-![run](https://github.com/user-attachments/assets/e5dc81b3-5e51-4e21-a214-7b10c3362754)
-
-![error](https://github.com/user-attachments/assets/d4a59f55-df63-4c8d-9c8c-52bbee34d41f)
-
 
 
 ---
@@ -100,7 +114,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/nikmasi/MiniKotlinIDE.git
-cd MiniKotlinIDE
+cd MiniKotlinIDE\MiniKotlinIDE
 ```
 
 Run via Gradle:
