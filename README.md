@@ -38,6 +38,10 @@ A lightweight Kotlin script editor and runner with syntax highlighting and click
 
 ![run](https://github.com/user-attachments/assets/e5dc81b3-5e51-4e21-a214-7b10c3362754)
 
+![error](https://github.com/user-attachments/assets/d4a59f55-df63-4c8d-9c8c-52bbee34d41f)
+
+
+
 ---
 
 ## Getting Started
