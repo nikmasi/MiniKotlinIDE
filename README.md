@@ -3,6 +3,7 @@
 A lightweight Kotlin script editor and runner with syntax highlighting and clickable error output, built with Kotlin Multiplatform and Compose Multiplatform for Desktop.
 
 [![Demo Video](screenshots/video_preview.png)](screenshots/video.mp4)
+
 ---
 
 ## Key Features
@@ -70,9 +71,16 @@ The output pane displays script output with **clickable errors**:
 ## Screenshots
 
 <p float="left">
-  <img src="screenshots/correct.png" width="200" alt="Correct" />
-  <img src="screenshots/running.png" width="200" alt="Running" />
+  <img src="screenshots/correct.png" width="400" alt="Correct" />
+  <img src="screenshots/running.png" width="400" alt="Running" />
 </p>
+
+![stop](https://github.com/user-attachments/assets/88088e15-2bf1-4a62-9424-1ad280cd1f56)
+
+![run](https://github.com/user-attachments/assets/e5dc81b3-5e51-4e21-a214-7b10c3362754)
+
+![error](https://github.com/user-attachments/assets/d4a59f55-df63-4c8d-9c8c-52bbee34d41f)
+
 
 
 ---
