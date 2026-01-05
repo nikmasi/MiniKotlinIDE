@@ -1,0 +1,8 @@
+println("Start")
+System.out.flush()
+Thread.sleep(2000)
+println("Middle")
+System.out.flush()
+Thread.sleep(2000)
+println("End")
+System.out.flush()
