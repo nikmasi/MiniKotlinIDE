@@ -66,7 +66,7 @@ The output pane displays script output with **clickable errors**:
 
 ## Engineering Features
 ### Reactive State & Concurrency Management
-Unlike simple text editors, this IDE manages a complex lifecycle of external processes using Kotlin Coroutines and StateFlow.
+This IDE manages a complex lifecycle of external processes using Kotlin Coroutines and StateFlow.
 
 ViewModel Architecture: Uses MutableStateFlow with an immutable ScriptUiState to ensure a "Single Source of Truth."
 
