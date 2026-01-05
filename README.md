@@ -2,6 +2,7 @@
 
 A lightweight Kotlin script editor and runner with syntax highlighting and clickable error output, built with Kotlin Multiplatform and Compose Multiplatform for Desktop.
 
+[![Demo Video](screenshots/video_preview.png)](screenshots/video.mp4)
 ---
 
 ## Features
