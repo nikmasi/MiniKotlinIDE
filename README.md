@@ -79,7 +79,7 @@ The IDE implements a custom bridge between the compiler output and the editor.
 
 Regex Parsing: A specialized ScriptParser uses optimized regular expressions to extract line:column metadata from the compiler's stderr.
 
-Interactive Output: The OutputPane uses LinkAnnotation.Clickable (Compose 1.7+ pattern) to turn raw text into interactive links that provide instant navigation back to the source code.
+Interactive Output: The OutputPane uses LinkAnnotation.Clickable to turn raw text into interactive links that provide instant navigation back to the source code.
 
 ### Custom Logic & UI Optimizations
 State-Driven Highlighting: The editor uses a custom-built Lexer that performs tokenization. Highlighting is applied via LaunchedEffect only when the text changes, preventing redundant re-renders.
