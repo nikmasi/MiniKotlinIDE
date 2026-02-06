@@ -1,8 +1,7 @@
 # MiniKotlinIDE
 
-A lightweight Kotlin script editor and runner with syntax highlighting and clickable error output, built with Kotlin Multiplatform and Compose Multiplatform for Desktop.
+A lightweight Kotlin script editor and runner with syntax highlighting and clickable error output, built with Kotlin Multiplatform for Desktop.
 
-[![Demo Video](screenshots/video_preview.png)](screenshots/video.mp4)
 ---
 
 ## Key Features
@@ -21,10 +20,6 @@ A lightweight Kotlin script editor and runner with syntax highlighting and click
 ### ViewModel & StateFlow
 
 All script logic is centralized in `ScriptViewModel.kt`. It manages editor text, script output, and execution status (`Idle`, `Running`, `Finished`, `Error`).  
-
-- `runScript()` executes the Kotlin script in a coroutine on a background thread.
-- `stopScript()` cancels running jobs and forcibly terminates processes.
-- `_cursorPosition` tracks editor cursor and allows jumping to errors.
 
 ---
 
@@ -62,32 +57,6 @@ The output pane displays script output with **clickable errors**:
 - Enables clickable error navigation in the editor.
 
 ---
-
-
-## Engineering Features
-### Reactive State & Concurrency Management
-This IDE manages a complex lifecycle of external processes using Kotlin Coroutines and StateFlow.
-
-ViewModel Architecture: Uses MutableStateFlow with an immutable ScriptUiState to ensure a "Single Source of Truth."
-
-Dispatchers & Lifecycle: Script execution is offloaded to Dispatchers.IO to keep the UI thread (Main) buttery smooth even during heavy compilation.
-
-Process Lifecycle Safety: Implemented NonCancellable blocks and destroyForcibly() to ensure no "zombie processes" are left behind if a user stops a script or closes the app.
-
-### "Smart Link" Error Navigation
-The IDE implements a custom bridge between the compiler output and the editor.
-
-Regex Parsing: A specialized ScriptParser uses optimized regular expressions to extract line:column metadata from the compiler's stderr.
-
-Interactive Output: The OutputPane uses LinkAnnotation.Clickable to turn raw text into interactive links that provide instant navigation back to the source code.
-
-### Custom Logic & UI Optimizations
-State-Driven Highlighting: The editor uses a custom-built Lexer that performs tokenization. Highlighting is applied via LaunchedEffect only when the text changes, preventing redundant re-renders.
-
-Dynamic Layouts: Implemented a custom Split-Pane logic using BoxWithConstraints and manual pixel-to-ratio calculations to allow real-time resizing.
-
-Automatic Bracket Pairing: Enhances Developer Experience (DX) by automatically inserting closing characters () {} [] "" with intelligent cursor placement.
-
 
 ## Screenshots
 
